@@ -1,0 +1,136 @@
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# The MIT License (MIT)
+#
+# Copyright (c) 2016 Waterside Consulting, inc.
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+dir  path=usr/local
+dir  path=usr/local/bin
+dir  path=usr/local/etc
+dir  path=usr/local/include
+dir  path=usr/local/lib
+link path=usr/local/lib/64 target=amd64
+dir  path=usr/local/lib/amd64
+link path=usr/local/man target=./share/man
+dir  path=usr/local/sbin
+dir  path=usr/local/share
+dir  path=usr/local/share/doc
+dir  path=usr/local/share/fonts
+dir  path=usr/local/share/fonts/TrueType
+dir  path=usr/local/share/fonts/X11
+dir  path=usr/local/share/info
+dir  path=usr/local/share/man
+dir  path=usr/local/share/man/man1
+dir  path=usr/local/share/man/man1b
+dir  path=usr/local/share/man/man1c
+dir  path=usr/local/share/man/man1m
+dir  path=usr/local/share/man/man1s
+dir  path=usr/local/share/man/man2
+dir  path=usr/local/share/man/man3
+dir  path=usr/local/share/man/man3c
+dir  path=usr/local/share/man/man3c_db
+dir  path=usr/local/share/man/man3cfgadm
+dir  path=usr/local/share/man/man3commputil
+dir  path=usr/local/share/man/man3contract
+dir  path=usr/local/share/man/man3cpc
+dir  path=usr/local/share/man/man3curses
+dir  path=usr/local/share/man/man3dat
+dir  path=usr/local/share/man/man3devid
+dir  path=usr/local/share/man/man3devinfo
+dir  path=usr/local/share/man/man3dlpi
+dir  path=usr/local/share/man/man3dns_sd
+dir  path=usr/local/share/man/man3elf
+dir  path=usr/local/share/man/man3exacct
+dir  path=usr/local/share/man/man3ext
+dir  path=usr/local/share/man/man3fcoe
+dir  path=usr/local/share/man/man3fm
+dir  path=usr/local/share/man/man3fstyp
+dir  path=usr/local/share/man/man3gen
+dir  path=usr/local/share/man/man3gss
+dir  path=usr/local/share/man/man3hbaapi
+dir  path=usr/local/share/man/man3head
+dir  path=usr/local/share/man/man3iscsit
+dir  path=usr/local/share/man/man3kstat
+dir  path=usr/local/share/man/man3kvm
+dir  path=usr/local/share/man/man3layout
+dir  path=usr/local/share/man/man3ldap
+dir  path=usr/local/share/man/man3lgrp
+dir  path=usr/local/share/man/man3lib
+dir  path=usr/local/share/man/man3m
+dir  path=usr/local/share/man/man3mail
+dir  path=usr/local/share/man/man3malloc
+dir  path=usr/local/share/man/man3mlib
+dir  path=usr/local/share/man/man3mp
+dir  path=usr/local/share/man/man3mpapi
+dir  path=usr/local/share/man/man3mvec
+dir  path=usr/local/share/man/man3nsl
+dir  path=usr/local/share/man/man3nvpair
+dir  path=usr/local/share/man/man3pam
+dir  path=usr/local/share/man/man3papi
+dir  path=usr/local/share/man/man3perl
+dir  path=usr/local/share/man/man3picl
+dir  path=usr/local/share/man/man3picltree
+dir  path=usr/local/share/man/man3plot
+dir  path=usr/local/share/man/man3pool
+dir  path=usr/local/share/man/man3proc
+dir  path=usr/local/share/man/man3project
+dir  path=usr/local/share/man/man3reparse
+dir  path=usr/local/share/man/man3resolv
+dir  path=usr/local/share/man/man3rpc
+dir  path=usr/local/share/man/man3sasl
+dir  path=usr/local/share/man/man3scf
+dir  path=usr/local/share/man/man3sec
+dir  path=usr/local/share/man/man3sip
+dir  path=usr/local/share/man/man3slp
+dir  path=usr/local/share/man/man3snmp
+dir  path=usr/local/share/man/man3socket
+dir  path=usr/local/share/man/man3srpt
+dir  path=usr/local/share/man/man3stmf
+dir  path=usr/local/share/man/man3sysevent
+dir  path=usr/local/share/man/man3tecla
+dir  path=usr/local/share/man/man3tsol
+dir  path=usr/local/share/man/man3uuid
+dir  path=usr/local/share/man/man3volmgt
+dir  path=usr/local/share/man/man3xcurses
+dir  path=usr/local/share/man/man3xnet
+dir  path=usr/local/share/man/man3xtsol
+dir  path=usr/local/share/man/man3zonestat
+dir  path=usr/local/share/man/man4
+dir  path=usr/local/share/man/man4b
+dir  path=usr/local/share/man/man5
+dir  path=usr/local/share/man/man6
+dir  path=usr/local/share/man/man7
+dir  path=usr/local/share/man/man7d
+dir  path=usr/local/share/man/man7fs
+dir  path=usr/local/share/man/man7i
+dir  path=usr/local/share/man/man7ipp
+dir  path=usr/local/share/man/man7m
+dir  path=usr/local/share/man/man7p
+dir  path=usr/local/share/man/man8
+dir  path=usr/local/share/man/man9
+dir  path=usr/local/share/man/man9e
+dir  path=usr/local/share/man/man9f
+dir  path=usr/local/share/man/man9p
+dir  path=usr/local/share/man/man9s
+dir  path=usr/local/share/src
+link path=usr/local/src target=./share/src
+dir  path=usr/local/var
