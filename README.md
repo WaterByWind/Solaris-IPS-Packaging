@@ -19,3 +19,6 @@ A list of packaging wrappers provided here.  Further details may be found within
 
 ##### core-local
 Simple IPS package to create standard `/usr/local` hierarchy
+
+##### Redis
+Basic IPS package for [Redis](https://redis.io), including default configuration file and SMF service manifest.

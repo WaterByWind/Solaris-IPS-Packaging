@@ -1,0 +1,66 @@
+<?xml version="1.0" ?>
+<!DOCTYPE service_bundle
+  SYSTEM '/usr/share/lib/xml/dtd/service_bundle.dtd.1'>
+<!--
+    Redis 3.2.x service manifest
+-->
+<service_bundle type="manifest" name="redis-server">
+    <service version="1" type="service" name="application/redis">
+        <instance enabled="false" name="redis-32">
+
+            <dependency name='network' 
+	        grouping='require_all'
+	        restart_on='none' 
+	        type='service'>
+                <service_fmri value='svc:/milestone/network:default'/>
+            </dependency>
+	    <dependency name='filesystem-local'
+	        grouping='require_all'
+		restart_on='none'
+		type='service'>
+		<service_fmri value='svc:/system/filesystem/local:default'/>
+	    </dependency>
+            <dependency name='redis-conf' 
+	        grouping='require_all'
+	        restart_on='refresh' 
+	        type='path'>
+                <service_fmri value='file://localhost/etc/opt/redis/redis.conf'/>
+            </dependency>
+
+            <method_context
+	        working_directory='/var/opt/redis'
+		project=":default"
+		resource_pool=":default" >
+                <method_credential 
+		    group="redis" user="redis"
+		    privileges='basic,{zone}:/system/volatile/redis.pid'/>
+            </method_context>
+    
+            <exec_method timeout_seconds="60" type="method" name="start"
+                exec="/opt/redis/bin/redis-server /etc/opt/redis/redis.conf"/>
+            <exec_method timeout_seconds="60" type="method" name="stop"
+                exec="/opt/redis/bin/redis-cli shutdown"/>
+            <exec_method timeout_seconds="60" type="method" name="refresh"
+                exec=":true"/>
+            <template>
+                <common_name>
+                    <loctext xml:lang="C">
+		    	Redis 3.2 Server
+                    </loctext>
+                </common_name>
+                <description>
+                    <loctext xml:lang="C">
+                        <!--
+                            Replace this comment with a brief description of
+                            the service
+                        -->
+                    </loctext>
+                </description>
+		<documentation>
+		    <doc_link name='redis.io'
+		        uri='http://redis.io/documentation' />
+	        </documentation>
+            </template>
+        </instance>
+    </service>
+</service_bundle>
