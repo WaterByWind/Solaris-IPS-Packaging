@@ -1,4 +1,4 @@
-# Solaris IPS Packaging 
+# Solaris IPS Packaging
 Solaris IPS packaging details for various projects.
 
 
@@ -18,5 +18,4 @@ Default template used as starting point for new IPS packages.
 A list of packaging wrappers provided here.  Further details may be found within each component directory.
 
 ##### core-local
-IPS package to create standard `/usr/local` hierarchy
-
+Simple IPS package to create standard `/usr/local` hierarchy
