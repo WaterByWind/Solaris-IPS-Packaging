@@ -1,0 +1,105 @@
+#!/bin/sh
+
+#==============================================================================
+#
+# The MIT License (MIT)
+#
+# Copyright (c) 2016 Waterside Consulting, Inc.
+#
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the "Software"),
+# to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense,
+# and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+# IN THE SOFTWARE.
+#
+#==============================================================================
+
+##
+## Sample service method for Ubiquiti UniFi Controller
+##
+
+. /lib/svc/share/smf_include.sh
+
+# SMF_FMRI is the name of the target service.
+if [ -z "${SMF_FMRI}" ]; then
+        echo "SMF framework variables are not initialized."
+        exit ${SMF_EXIT_ERR_NOSMF}
+fi
+
+# Some static pre-defined defaults
+NAME="unifi"
+BASEDIR="/opt/unifi"
+LIBDIR="${BASEDIR}/lib"
+RUNDIR="/var/run/${NAME}"
+DATADIR="/var/opt/${NAME}/data"
+LOGDIR="/var/opt/${NAME}/logs"
+
+PIDFILE="${RUNDIR}/${NAME}.pid"
+JARFILE="${LIBDIR}/ace.jar"
+
+SNAPPYLIB="libsnappyjava.so"
+
+JAVA_HOME="/usr/java"
+JVM_OPTS="-server -Djava.awt.headless=true -Dfile.encoding=UTF-8 -Xmx1024M"
+JVM_EXTRA_OPTS="-Duniifi.datadir=${DATADIR} -Dunifi.rundir=${RUNDIR} -Dunifi.logdir=${LOGDIR}"
+
+SNAPPY_JAVA_OPTS=""
+
+#
+# Check if an alternate native snappy-java library exists
+# If so, set options to allow snappy-java to use this alternate
+#
+setSnappyJavaOpts()
+{
+	osPlatform=$(${JAVA_HOME}/bin/java -cp ${LIBDIR}/snappy-java-*.jar org.xerial.snappy.OSInfo)
+	if [ -z "${osPlatform}" ]; then
+		echo "FATAL:  Could not identify native OS platform using snappy-java"
+		exit ${SMF_EXIT_ERR_FATAL}
+	fi
+	libPlatDir="${LIBDIR}/native/${osPlatform}"
+	if [ -d "${libPlatDir}" -a -f "${libPlatDir}/${SNAPPYLIB}" ]; then
+		SNAPPY_JAVA_OPTS="${SNAPPY_JAVA_OPTS} -Dorg.xerial.snappy.lib.path=${libPlatDir} -Dorg.xerial.snappy.lib.name=${SNAPPYLIB}"
+	fi
+}
+
+setSnappyJavaOpts
+
+JAVACMD="${JAVA_HOME}/bin/java ${JVM_OPTS} ${JVM_EXTRA_OPTS} ${SNAPPY_JAVA_OPTS} -jar ${JARFILE}"
+
+case "$1" in
+'start')
+	if [ ! -d ${RUNDIR} ]; then
+		mkdir -p ${RUNDIR}
+		if [ $? -ne 0 ]; then
+			echo "Unable to create rundir '${RUNDIR}'"
+			exit ${SMF_EXIT_ERR_FATAL}
+		fi
+	fi
+	${JAVACMD} start &
+	;;
+
+'stop')
+	${JAVACMD} stop
+	;;
+
+*)
+	# Should never reach this
+	echo "Usage: $0 start"
+	exit ${SMF_EXIT_ERR_FATAL}
+	;;
+
+esac
+
+exit ${SMF_EXIT_OK}

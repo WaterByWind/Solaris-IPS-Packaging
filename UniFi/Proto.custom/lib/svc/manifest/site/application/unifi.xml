@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+<!DOCTYPE service_bundle
+  SYSTEM '/usr/share/lib/xml/dtd/service_bundle.dtd.1'>
+<!--
+    Ubiquiti Networks Unifi 5.x service manifest
+-->
+<!--
+    The MIT License (MIT)
+
+    Copyright (c) 2017 Waterside Consulting, inc.
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+
+<service_bundle type="manifest" name="unifi">
+    <service version="1" type="service" name="application/unifi">
+        <instance enabled="false" name="unifi-v5">
+
+            <dependency name='network' 
+	        grouping='require_all'
+	        restart_on='none' 
+	        type='service'>
+                <service_fmri value='svc:/milestone/network:default'/>
+            </dependency>
+	    <dependency name='filesystem-local'
+	        grouping='require_all'
+		restart_on='none'
+		type='service'>
+		<service_fmri value='svc:/system/filesystem/local:default'/>
+	    </dependency>
+
+            <method_context
+	        working_directory='/var/opt/unifi'
+		project=":default"
+		resource_pool=":default" >
+                <method_credential 
+		    group="unifi" user="unifi"
+		    privileges='basic,{zone}:/system/volatile/unifi'/>
+                <method_environment>
+                    <envvar name='LC_ALL' value='C' />
+                </method_environment>
+            </method_context>
+    
+            <exec_method timeout_seconds="120" type="method" name="start"
+                exec="/lib/svc/method/svc-unifi %m"/>
+            <exec_method timeout_seconds="120" type="method" name="stop"
+                exec="/lib/svc/method/svc-unifi %m"/>
+            <exec_method timeout_seconds="60" type="method" name="refresh"
+                exec=":true"/>
+            <template>
+                <common_name>
+                    <loctext xml:lang="C">
+		    	UniFi v5 Controller
+                    </loctext>
+                </common_name>
+                <description>
+                    <loctext xml:lang="C">
+                        <!--
+                            Replace this comment with a brief description of
+                            the service
+                        -->
+                    </loctext>
+                </description>
+		<documentation>
+		    <doc_link name='ubnt.com'
+		        uri='https://help.ubnt.com/hc/en-us/categories/200320654-UniFi-Wireless' />
+	        </documentation>
+            </template>
+        </instance>
+    </service>
+</service_bundle>
