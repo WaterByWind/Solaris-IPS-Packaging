@@ -11,7 +11,7 @@
   1. `export JAVA_HOME=/usr/java`
   2. `cd ~/src`
   3. `git clone https://github.com/xerial/snappy-java.git`
-  4. `cd snapy-java`
+  4. `cd snappy-java`
   5. `gmake native`
   6. `cp target/snappy-1.1.4-SunOS-x86_64/libsnappyjava.so ~/pkg/UniFi/Proto.custom/opt/unifi/lib/native/SunOS/amd64/`
 2. `cd ~/src`
