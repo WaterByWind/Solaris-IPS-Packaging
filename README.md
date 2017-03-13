@@ -17,11 +17,15 @@ Default template used as starting point for new IPS packages.
 ## <u>Packages</u>
 A list of packaging wrappers provided here.  Further details may be found within each component directory.
 
-#### core-local  
+#### [core-local](core-local)   
 Simple IPS package to create standard `/usr/local` hierarchy.
 
-#### Redis  
+#### [MongoDB](MongoDB)  
+Basic IPS package for [MongoDB](https://www.mongodb.com), including default configuration file and SMF service manifest.
+
+#### [Redis](Redis)   
 Basic IPS package for [Redis](https://redis.io), including default configuration file and SMF service manifest.
 
-#### UniFi  
+#### [UniFi](UniFi)   
 [Ubiquiti](https://www.ubnt.com) [UniFi](https://unifi-sdn.ubnt.com) controller, including SMF service manifest and method.
+

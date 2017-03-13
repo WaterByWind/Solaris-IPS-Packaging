@@ -1,0 +1,71 @@
+<?xml version="1.0" ?>
+<!DOCTYPE service_bundle
+  SYSTEM '/usr/share/lib/xml/dtd/service_bundle.dtd.1'>
+
+<service_bundle type="manifest" name="mongodb">
+    <service version="1" type="service" name="application/database/mongodb">
+        <instance enabled="false" name="mongodb-34">
+            <dependency
+                name='network'
+                grouping='require_all'
+                restart_on='none'
+                type='service'>
+                <service_fmri value='svc:/milestone/network:default' />
+            </dependency>
+            <dependency
+                name='filesystem-local'
+                grouping='require_all'
+                restart_on='none'
+                type='service'>
+                <service_fmri value='svc:/system/filesystem/local:default' />
+            </dependency>
+	    <dependency
+	        name='mongod-conf'
+		grouping='require_all'
+		restart_on='refresh'
+		type='path'>
+	        <service_fmri value='file://localhost/etc/opt/mongodb/mongod.conf'/>
+   	    </dependency>
+
+            <method_context 
+	        working_directory='/var/opt/mongodb'
+		project=":default"
+		resource_pool=":default" >
+                <method_credential 
+		    group="mongodb" user="mongodb"
+		    privileges='basic,{zone}:/system/volatile/mongod.pid'/>
+	        <method_environment>
+		    <envvar name='PATH' value='/opt/mongodb-3.4/bin:/usr/bin:/usr/sbin' />
+		    <envvar name='LC_ALL' value='C' />
+		</method_environment>
+            </method_context>
+            <exec_method timeout_seconds="60" type="method" name="start"
+                exec="/opt/mongodb-3.4/bin/mongod --config /etc/opt/mongodb/mongod.conf"/>
+            <exec_method timeout_seconds="60" type="method" name="stop"
+                exec=":kill"/>
+            <exec_method timeout_seconds="60" type="method" name="refresh"
+                exec=":true"/>
+
+            <template>
+                <common_name>
+                    <loctext xml:lang="C">
+		      MongoDB Document Database
+                    </loctext>
+                </common_name>
+                <description>
+                    <loctext xml:lang="C">
+                        <!--
+                            Replace this comment with a brief description of
+                            the service
+                        -->
+                    </loctext>
+                </description>
+	        <documentation>
+		    <doc_link name="mongodb.org" 
+			uri='https://docs.mongodb.org/manual/' />
+		</documentation>
+            </template>
+        </instance>
+        <stability value='Evolving' />
+    </service>
+</service_bundle>
