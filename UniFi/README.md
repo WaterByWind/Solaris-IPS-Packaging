@@ -3,7 +3,7 @@
 The UniFi® Software-Defined Networking (SDN) platform is an end-to-end system of network devices across different locations — all controlled from a single interface.
 
 ### Packaging
-See `BUILDNOTES.md` for details regarding compiling dependencies and building an IPS package.
+See [BUILDNOTES.md](Build/BUILDNOTES.md) for details regarding compiling dependencies and building an IPS package.
 
 In addition to the vendor-distributed java application, this package also provides:
 - Standard SMF service (svc:/application/unifi:unifi-v5)

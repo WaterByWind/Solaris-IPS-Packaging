@@ -3,7 +3,7 @@
 MongoDB is an open-source, document database designed for ease of development and scaling.
 
 ### Packaging
-See [BUILDNOTES.md](BUILDNOTES.md) for details regarding compiling MongoDB and building an IPS package.
+See [BUILDNOTES.md](Build/BUILDNOTES.md) for details regarding compiling MongoDB and building an IPS package.
 
 In addition to the binaries resulting from the application build, this package also provides:
 - Standard SMF service (svc:/application/database/mongodb:mongodb-34)

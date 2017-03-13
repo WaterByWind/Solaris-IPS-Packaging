@@ -3,7 +3,7 @@
 Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs and geospatial indexes with radius queries. Redis has built-in replication, Lua scripting, LRU eviction, transactions and different levels of on-disk persistence, and provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster.
 
 ### Packaging
-See `BUILDNOTES.md` for details regarding compiling Redis and building an IPS package.
+See [BUILDNOTES.md](Build/BUILDNOTES.md) for details regarding compiling Redis and building an IPS package.
 
 In addition to the binaries resulting from the application build, this package also provides:
 - Standard SMF service (svc:/application/redis:redis-32)
