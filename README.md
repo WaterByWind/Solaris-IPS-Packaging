@@ -26,6 +26,9 @@ Basic IPS package for [Go](https://golang.org).
 #### [MongoDB](MongoDB)  
 Basic IPS package for [MongoDB](https://www.mongodb.com), including default configuration file and SMF service manifest.
 
+#### [Netatalk](Netatalk)  
+Basic IPS package for [Netatalk](http://netatalk.sourceforge.net), including default configuration file and SMF service manifest.
+
 #### [Redis](Redis)   
 Basic IPS package for [Redis](https://redis.io), including default configuration file and SMF service manifest.
 
