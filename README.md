@@ -20,6 +20,9 @@ A list of packaging wrappers provided here.  Further details may be found within
 #### [core-local](core-local)   
 Simple IPS package to create standard `/usr/local` hierarchy.
 
+#### [Go](Go)   
+Basic IPS package for [Go](https://golang.org).
+
 #### [MongoDB](MongoDB)  
 Basic IPS package for [MongoDB](https://www.mongodb.com), including default configuration file and SMF service manifest.
 
@@ -28,4 +31,3 @@ Basic IPS package for [Redis](https://redis.io), including default configuration
 
 #### [UniFi](UniFi)   
 [Ubiquiti](https://www.ubnt.com) [UniFi](https://unifi-sdn.ubnt.com) controller, including SMF service manifest and method.
-
