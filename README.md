@@ -29,6 +29,9 @@ Basic IPS package for [Go](https://golang.org).
 #### [InfluxDB](InfluxDB)  
 Basic IPS package for [InfluxDB](https://influxdata.com/), including default configuration file and SMF service manifest.
 
+#### [Kapacitor](Kapacitor)  
+Basic IPS package for [Kapacitor](https://influxdata.com/), including default configuration file and SMF service manifest.
+
 #### [MongoDB](MongoDB)  
 Basic IPS package for [MongoDB](https://www.mongodb.com), including default configuration file and SMF service manifest.
 

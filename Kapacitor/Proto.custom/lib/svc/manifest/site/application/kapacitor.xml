@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+<!DOCTYPE service_bundle
+  SYSTEM '/usr/share/lib/xml/dtd/service_bundle.dtd.1'>
+
+<service_bundle type="manifest" name="kapacitor">
+    <service version="1" type="service" name="application/kapacitor">
+        <instance enabled="false" name="kapacitor-12">
+            <dependency
+                name='network'
+                grouping='require_all'
+                restart_on='none'
+                type='service'>
+                <service_fmri value='svc:/milestone/network:default' />
+            </dependency>
+            <dependency
+                name='filesystem-local'
+                grouping='require_all'
+                restart_on='none'
+                type='service'>
+                <service_fmri value='svc:/system/filesystem/local:default' />
+            </dependency>
+	    <dependency
+	        name='kapacitor-conf'
+		grouping='require_all'
+		restart_on='refresh'
+		type='path'>
+	        <service_fmri value='file://localhost/etc/opt/kapacitor/kapacitor.conf' />
+   	    </dependency>
+
+            <method_context
+	        working_directory='/var/opt/kapacitor'
+		project=":default"
+		resource_pool=":default" >
+                <method_credential
+		    group="kapacitor" user="kapacitor"
+		    privileges="basic,{zone}:/system/volatile/kapacitor.pid" />
+	        <method_environment>
+		    <envvar name='PATH' value='/opt/kapacitor/bin:/usr/bin:/usr/sbin' />
+		</method_environment>
+            </method_context>
+            <exec_method timeout_seconds="60" type="method" name="start"
+                exec="/opt/kapacitor/bin/kapacitord -pidfile /var/run/kapacitor.pid -config /etc/opt/kapacitor/kapacitor.conf &amp;"/>
+            <exec_method timeout_seconds="60" type="method" name="stop"
+                exec=":kill"/>
+            <exec_method timeout_seconds="60" type="method" name="refresh"
+                exec=":true"/>
+
+            <template>
+                <common_name>
+                    <loctext xml:lang="C">
+		      Kapacitor Time Series Data Processing Engine
+                    </loctext>
+                </common_name>
+                <description>
+                    <loctext xml:lang="C">
+                        <!--
+                            Replace this comment with a brief description of
+                            the service
+                        -->
+                    </loctext>
+                </description>
+	        <documentation>
+		    <doc_link name="influxdata.com"
+			uri='https://docs.influxdata.com/kapacitor/' />
+		</documentation>
+            </template>
+        </instance>
+        <stability value='Evolving' />
+    </service>
+</service_bundle>
