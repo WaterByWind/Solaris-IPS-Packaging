@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+<!DOCTYPE service_bundle
+  SYSTEM '/usr/share/lib/xml/dtd/service_bundle.dtd.1'>
+
+<service_bundle type="manifest" name="influxdb">
+    <service version="1" type="service" name="application/database/influxdb">
+        <instance enabled="false" name="influxdb-12">
+            <dependency
+                name='network'
+                grouping='require_all'
+                restart_on='none'
+                type='service'>
+                <service_fmri value='svc:/milestone/network:default' />
+            </dependency>
+            <dependency
+                name='filesystem-local'
+                grouping='require_all'
+                restart_on='none'
+                type='service'>
+                <service_fmri value='svc:/system/filesystem/local:default' />
+            </dependency>
+	    <dependency
+	        name='influxdb-conf'
+		grouping='require_all'
+		restart_on='refresh'
+		type='path'>
+	        <service_fmri value='file://localhost/etc/opt/influxdb/influxdb.conf' />
+   	    </dependency>
+
+            <method_context 
+	        working_directory='/var/opt/influxdb'
+		project=":default"
+		resource_pool=":default" >
+                <method_credential 
+		    group="influxdb" user="influxdb"
+		    privileges="basic,{zone}:/system/volatile/influxd.pid" />
+	        <method_environment>
+		    <envvar name='PATH' value='/opt/influxdb/bin:/usr/bin:/usr/sbin' />
+		</method_environment>
+            </method_context>
+            <exec_method timeout_seconds="60" type="method" name="start"
+                exec="/opt/influxdb/bin/influxd -pidfile /var/run/influxd.pid -config /etc/opt/influxdb/influxdb.conf &amp;"/>
+            <exec_method timeout_seconds="60" type="method" name="stop"
+                exec=":kill"/>
+            <exec_method timeout_seconds="60" type="method" name="refresh"
+                exec=":true"/>
+
+            <template>
+                <common_name>
+                    <loctext xml:lang="C">
+		      InfluxDB Time Series Database
+                    </loctext>
+                </common_name>
+                <description>
+                    <loctext xml:lang="C">
+                        <!--
+                            Replace this comment with a brief description of
+                            the service
+                        -->
+                    </loctext>
+                </description>
+	        <documentation>
+		    <doc_link name="influxdata.com" 
+			uri='https://docs.influxdata.com/influxdb/' />
+		</documentation>
+            </template>
+        </instance>
+        <stability value='Evolving' />
+    </service>
+</service_bundle>

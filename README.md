@@ -26,6 +26,9 @@ Basic IPS package for [AsciiDoc](http://asciidoc.org).
 #### [Go](Go)   
 Basic IPS package for [Go](https://golang.org).
 
+#### [InfluxDB](InfluxDB)  
+Basic IPS package for [InfluxDB](https://influxdata.com/), including default configuration file and SMF service manifest.
+
 #### [MongoDB](MongoDB)  
 Basic IPS package for [MongoDB](https://www.mongodb.com), including default configuration file and SMF service manifest.
 
