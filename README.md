@@ -20,6 +20,9 @@ A list of packaging wrappers provided here.  Further details may be found within
 #### [core-local](core-local)   
 Simple IPS package to create standard `/usr/local` hierarchy.
 
+#### [AsciiDoc](AsciiDoc)   
+Basic IPS package for [AsciiDoc](http://asciidoc.org).
+
 #### [Go](Go)   
 Basic IPS package for [Go](https://golang.org).
 
