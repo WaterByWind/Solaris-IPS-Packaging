@@ -17,6 +17,9 @@ Default template used as starting point for new IPS packages.
 ## <u>Packages</u>
 A list of packaging wrappers provided here.  Further details may be found within each component directory.
 
+#### [c-ares](c-ares)   
+Basic IPS package for [c-ares](https://c-ares.haxx.se/).
+
 #### [core-local](core-local)   
 Simple IPS package to create standard `/usr/local` hierarchy.
 
