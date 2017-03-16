@@ -24,9 +24,7 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
 # Remove git control files
-<transform dir file path=.+/\.git(|config|ignore|attributes|modules|keep|/.+)$ -> drop>
+<transform dir file path=(^|.+/)\.git(|config|ignore|attributes|modules|keep|/.+)$ -> drop>
 
 # Remove Mercurial control files
-<transform dir file path=.+/\.hg(|ignore|sub|substate|tags|/.+)$ -> drop>
-
-
+<transform dir file path=(^|.+/)\.hg(|ignore|sub|substate|tags|/.+)$ -> drop>
