@@ -32,6 +32,9 @@ Basic IPS package for [Go](https://golang.org).
 #### [InfluxDB](InfluxDB)  
 Basic IPS package for [InfluxDB](https://influxdata.com/), including default configuration file and SMF service manifest.
 
+#### [iperf3](iperf3)   
+Basic IPS package for [iperf3](http://software.es.net/iperf).
+
 #### [Kapacitor](Kapacitor)  
 Basic IPS package for [Kapacitor](https://influxdata.com/), including default configuration file and SMF service manifest.
 
