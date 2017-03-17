@@ -52,3 +52,6 @@ Basic IPS package for [Redis](https://redis.io), including default configuration
 
 #### [UniFi](UniFi)   
 [Ubiquiti](https://www.ubnt.com) [UniFi](https://unifi-sdn.ubnt.com) controller, including SMF service manifest and method.
+
+#### [Yarn](Yarn)   
+Basic IPS package for [Yarn](https://yarnpkg.com/) package and dependency manager.
