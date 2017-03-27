@@ -46,7 +46,7 @@ SW_SOURCE_URL=		https://yarnpkg.com/downloads/$(SW_IPS_VERSION)/yarn-v$(SW_IPS_V
 # Used by metadata.mog
 SW_USERLAND_GIT_REMOTE=	https://github.com/yarnpkg/yarn
 SW_HUMAN_VERSION=	$(SW_IPS_VERSION)
-SW_LICENSE_FILE=	opt/yarn/LICENSE
+SW_LICENSE_FILE=	dist/LICENSE
 SW_LICENSE=		BSD License
 
 #
