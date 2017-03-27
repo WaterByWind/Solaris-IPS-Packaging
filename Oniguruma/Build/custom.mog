@@ -26,8 +26,8 @@
 # Custom transforms, not already handled by included transforms.
 
 # Move distribution to proper location
-# <transform dir file link path=dist/(.+)$ -> edit path dist/(.+)$ \\1>
+<transform dir file link path=dist/(.+)$ -> edit path dist/(.+)$ \\1>
 
-# # Remove temporary distribution extraction path
-# <transform dir path=dist$ -> drop>
+# Remove temporary distribution extraction path
+<transform dir path=dist$ -> drop>
 
