@@ -47,6 +47,9 @@ Basic IPS package for [Netatalk](http://netatalk.sourceforge.net), including def
 #### [Node.js](Node.js)   
 Basic IPS package for [Node.js](https://nodejs.org/).
 
+#### [Oniguruma](Oniguruma)   
+Basic IPS package for [Oniguruma](https://github.com/kkos/oniguruma/) regular expression library.
+
 #### [Redis](Redis)   
 Basic IPS package for [Redis](https://redis.io), including default configuration file and SMF service manifest.
 
